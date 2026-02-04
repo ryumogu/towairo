@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - Botanical Pet Art</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- ヘッダー＆ナビゲーション -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Botanical Pet Art</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="flow.html">ご利用の流れ</a></li>
+                    <li><a href="terms.html">制作依頼</a></li>
+                    <li><a href="contact.html" class="active">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ページヘッダー -->
+    <section class="page-header">
+        <div class="container">
+            <h1>
+                <i class="fas fa-envelope"></i>
+                お問い合わせ
+            </h1>
+            <p>ご質問やご相談がございましたら、お気軽にお問い合わせください</p>
+        </div>
+    </section>
+
+    <!-- お問い合わせセクション -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- お問い合わせフォーム -->
+                <div class="contact-form-wrapper">
+                    <h2><i class="fas fa-paper-plane"></i> お問い合わせフォーム</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="contactName" class="required">お名前</label>
+                            <input type="text" id="contactName" name="contactName" required placeholder="例：山田 太郎">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail" class="required">メールアドレス</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required placeholder="例：example@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactSubject" class="required">件名</label>
+                            <select id="contactSubject" name="contactSubject" required>
+                                <option value="">選択してください</option>
+                                <option value="制作依頼について">制作依頼について</option>
+                                <option value="制作進捗の確認">制作進捗の確認</option>
+                                <option value="グッズについて">グッズについて</option>
+                                <option value="画像データについて">画像データについて</option>
+                                <option value="その他">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage" class="required">お問い合わせ内容</label>
+                            <textarea id="contactMessage" name="contactMessage" rows="8" required placeholder="お問い合わせ内容をご記入ください"></textarea>
+                        </div>
+
+                        <button type="submit" class="cta-button large">
+                            <i class="fas fa-paper-plane"></i>
+                            送信する
+                        </button>
+                    </form>
+
+                    <!-- 送信完了メッセージ -->
+                    <div id="contactSuccessMessage" class="success-message" style="display: none;">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>送信完了しました！</h3>
+                        <p>お問い合わせありがとうございます。<br>確認次第ご返信させていただきます。</p>
+                        <button class="cta-button" onclick="location.reload()">
+                            <i class="fas fa-redo"></i>
+                            新規お問い合わせ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- よくある質問 -->
+                <div class="faq-wrapper">
+                    <h2><i class="fas fa-question-circle"></i> よくある質問</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>イラスト制作は本当に無料ですか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>はい、現在は完全無料で制作しております。費用が発生するのは、完成したアートをグッズとしてご購入いただく場合のみです。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>どのくらいで完成しますか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>通常1〜5営業日でイラストが完成します。繁忙期はそれ以上のお時間がかかる場合がございますので、予めご了承ください。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>グッズを買わないとダメですか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>購入義務はございません。ただし、イラストデータの納品は、グッズを1点以上ご購入いただいた方への特典となります。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>修正は可能ですか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>はい、完成後1回まで無料で修正対応いたします。修正には1〜3営業日程度お時間をいただきます。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>犬・猫以外のペットも対応していますか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>うさぎ、ハムスター、フェレット、モルモットなどの小動物や鳥類も対応可能です。爬虫類・両生類はご相談ください。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>画像データの商用利用はできますか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>商用利用・二次配布は禁止させていただいております。個人利用（SNS投稿、スマホ壁紙など）の範囲でご使用ください。</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <i class="fas fa-angle-right"></i>
+                                <span>どんな写真が良いですか？</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>明るく、顔がはっきり写っている写真が最適です。正面または斜め前からの角度を推奨しています。複数枚あると特徴を捉えやすくなります。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>
+                        <i class="fas fa-leaf"></i>
+                        Botanical Pet Art
+                    </h3>
+                    <p>インテリアに溶け込む、うちの子アート</p>
+                </div>
+                <div class="footer-links">
+                    <h4>リンク</h4>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="flow.html">ご利用の流れ</a></li>
+                        <li><a href="terms.html">制作依頼</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Botanical Pet Art. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

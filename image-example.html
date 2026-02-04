@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像配置例 - Botanical Pet Art</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 画像表示用の追加CSS */
+        .sample-art-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-box {
+            position: relative;
+            flex: 1;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .image-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* プレースホルダーと実画像の切り替え用 */
+        .image-placeholder.hidden {
+            display: none;
+        }
+
+        .example-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .example-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--primary-dark);
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .example-card {
+            background: var(--bg-cream);
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .example-card h3 {
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+
+        .example-card pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+        }
+
+        .note-box {
+            background: #FFF9E6;
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="example-section">
+            <h1 class="example-title">🖼️ 画像配置の実装例</h1>
+
+            <div class="note-box">
+                <h3>📝 このページについて</h3>
+                <p>実際に画像を配置する際の具体的なコード例を示しています。<br>
+                画像ファイルを配置したら、index.htmlを以下のように修正してください。</p>
+            </div>
+
+            <!-- 例1: ヒーローセクションの画像 -->
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3>例1: ヒーローセクションのサンプルアート</h3>
+                    <p><strong>画像配置場所:</strong> <code>images/hero/sample-art.jpg</code></p>
+                    
+                    <h4>変更前（プレースホルダー）:</h4>
+                    <pre>&lt;div class="artwork-placeholder"&gt;
+    &lt;i class="fas fa-paw"&gt;&lt;/i&gt;
+    &lt;p&gt;水彩画風&lt;br&gt;ボタニカルアート&lt;/p&gt;
+&lt;/div&gt;</pre>
+
+                    <h4>変更後（実際の画像）:</h4>
+                    <pre>&lt;img src="images/hero/sample-art.jpg" 
+     alt="ボタニカルペットアート作品例" 
+     class="sample-art-image"&gt;</pre>
+                </div>
+
+                <!-- 例2: ギャラリー Before画像 -->
+                <div class="example-card">
+                    <h3>例2: ギャラリー Before画像</h3>
+                    <p><strong>画像配置場所:</strong> <code>images/gallery/dog-before-1.jpg</code></p>
+                    
+                    <h4>変更前（プレースホルダー）:</h4>
+                    <pre>&lt;div class="image-box before"&gt;
+    &lt;div class="image-placeholder"&gt;
+        &lt;i class="fas fa-camera"&gt;&lt;/i&gt;
+        &lt;p&gt;Before&lt;/p&gt;
+        &lt;span&gt;お写真&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+                    <h4>変更後（実際の画像）:</h4>
+                    <pre>&lt;div class="image-box before"&gt;
+    &lt;img src="images/gallery/dog-before-1.jpg" 
+         alt="柴犬まるちゃんの写真" 
+         class="gallery-image"&gt;
+    &lt;span class="image-label"&gt;Before&lt;/span&gt;
+&lt;/div&gt;</pre>
+                </div>
+
+                <!-- 例3: ギャラリー After画像 -->
+                <div class="example-card">
+                    <h3>例3: ギャラリー After画像</h3>
+                    <p><strong>画像配置場所:</strong> <code>images/gallery/dog-after-1.jpg</code></p>
+                    
+                    <h4>変更前（プレースホルダー）:</h4>
+                    <pre>&lt;div class="image-box after"&gt;
+    &lt;div class="image-placeholder art"&gt;
+        &lt;i class="fas fa-palette"&gt;&lt;/i&gt;
+        &lt;p&gt;After&lt;/p&gt;
+        &lt;span&gt;ボタニカルアート&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+                    <h4>変更後（実際の画像）:</h4>
+                    <pre>&lt;div class="image-box after"&gt;
+    &lt;img src="images/gallery/dog-after-1.jpg" 
+         alt="柴犬まるちゃんのボタニカルアート" 
+         class="gallery-image"&gt;
+    &lt;span class="image-label"&gt;After&lt;/span&gt;
+&lt;/div&gt;</pre>
+                </div>
+            </div>
+
+            <!-- 必要なCSSの追加 -->
+            <div class="note-box">
+                <h3>✨ 追加が必要なCSS</h3>
+                <p><code>css/style.css</code> の最後に以下を追加してください：</p>
+                <pre>/* 画像表示用のスタイル */
+.sample-art-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.image-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .sample-art-image {
+        max-width: 220px;
+    }
+    
+    .image-label {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+    }
+}</pre>
+            </div>
+
+            <!-- プレビュー例 -->
+            <h2 class="example-title" style="margin-top: 80px;">📸 表示プレビュー例</h2>
+            
+            <div class="gallery-item">
+                <div class="before-after">
+                    <div class="image-box before">
+                        <!-- プレースホルダー画像（Unsplash使用） -->
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&h=600&fit=crop" 
+                             alt="柴犬の写真例" 
+                             class="gallery-image">
+                        <span class="image-label">Before</span>
+                    </div>
+                    <div class="arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="image-box after">
+                        <!-- プレースホルダー画像（Unsplash使用） -->
+                        <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=600&h=600&fit=crop" 
+                             alt="ボタニカルアート例" 
+                             class="gallery-image">
+                        <span class="image-label">After</span>
+                    </div>
+                </div>
+                <p class="pet-name">柴犬 まるちゃん（表示例）</p>
+            </div>
+
+            <div class="note-box" style="margin-top: 60px;">
+                <h3>🎯 次のステップ</h3>
+                <ol>
+                    <li><code>images/gallery/</code> フォルダに実際の画像を配置</li>
+                    <li><code>index.html</code> のプレースホルダー部分を上記コードに置き換え</li>
+                    <li><code>css/style.css</code> に追加CSSをコピー</li>
+                    <li>ブラウザで確認！</li>
+                </ol>
+                <p><strong>自動で修正を希望する場合：</strong><br>
+                「画像を配置したので、HTMLとCSSを修正してください」とお知らせください。</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

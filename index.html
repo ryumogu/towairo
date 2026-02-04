@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botanical Pet Art - インテリアに溶け込む、うちの子アート</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- ヘッダー＆ナビゲーション -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Botanical Pet Art</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">ホーム</a></li>
+                    <li><a href="flow.html">ご利用の流れ</a></li>
+                    <li><a href="terms.html">制作依頼</a></li>
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+
+            <h1 class="hero-title">インテリアに溶け込む、<br>うちの子アート</h1>
+            
+            <!-- サンプルアート画像を上部に配置 -->
+            <div class="hero-image-top">
+                <div class="sample-artwork">
+                    <div class="artwork-card">
+                        <div class="artwork-placeholder">
+                            <i class="fas fa-paw"></i>
+                            <p>水彩画風<br>ボタニカルアート</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <p class="hero-subtitle">あなたのペットを、ボタニカル×水彩画風の繊細なアートに</p>
+            
+            <a href="terms.html" class="cta-button">
+                <i class="fas fa-palette"></i>
+                制作を依頼する
+            </a>
+            
+            <div class="hero-features">
+                <!-- 🔥 無料期間が終わったら、この「制作費無料」を「制作費5,000円〜」などに変更 -->
+                <div class="feature-item limited-highlight">
+                    <i class="fas fa-gift"></i>
+                    <span>制作費無料</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-image"></i>
+                    <span>データプレゼント</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tshirt"></i>
+                    <span>グッズ制作</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section class="concept-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration"></span>
+                Concept
+                <span class="title-decoration"></span>
+            </h2>
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <div class="concept-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>ボタニカル×水彩画</h3>
+                    <p>植物の癒しと水彩画の温かみを組み合わせた、大人のインテリアに馴染むデザイン</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>アート性重視</h3>
+                    <p>キャラクター的なデフォルメではなく、美しく飾れる絵画としての価値を創出</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <!-- 🔥 無料期間が終わったら、h3とpの内容を変更 -->
+                    <!-- 例: <h3>安心の価格</h3> -->
+                    <!-- 例: <p>明確な料金体系で、納得いただいた上で制作を開始します</p> -->
+                    <h3>初期費用ゼロ</h3><strong class="limited-text">【期間限定】</strong>
+                    <p>イラスト制作費は無料。気に入ったらグッズをご購入いただくシステム</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 制作事例セクション -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="title-decoration"></span>
+                制作事例
+                <span class="title-decoration"></span>
+            </h2>
+            <p class="section-description">実際に制作したボタニカルアートの例</p>
+            
+            <!-- 犬の事例 -->
+            <div class="gallery-category">
+                <h3 class="category-title">
+                    <i class="fas fa-dog"></i>
+                    Dog
+                </h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="before-after">
+                            <div class="image-box before">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Before</p>
+                                    <span>お写真</span>
+                                </div>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-box after">
+                                <div class="image-placeholder art">
+                                    <i class="fas fa-palette"></i>
+                                    <p>After</p>
+                                    <span>ボタニカルアート</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pet-name">柴犬 まるちゃん</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="before-after">
+                            <div class="image-box before">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Before</p>
+                                    <span>お写真</span>
+                                </div>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-box after">
+                                <div class="image-placeholder art">
+                                    <i class="fas fa-palette"></i>
+                                    <p>After</p>
+                                    <span>ボタニカルアート</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pet-name">トイプードル ココちゃん</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 猫の事例 -->
+            <div class="gallery-category">
+                <h3 class="category-title">
+                    <i class="fas fa-cat"></i>
+                    Cat
+                </h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="before-after">
+                            <div class="image-box before">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Before</p>
+                                    <span>お写真</span>
+                                </div>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-box after">
+                                <div class="image-placeholder art">
+                                    <i class="fas fa-palette"></i>
+                                    <p>After</p>
+                                    <span>ボタニカルアート</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pet-name">スコティッシュフォールド むぎちゃん</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="before-after">
+                            <div class="image-box before">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Before</p>
+                                    <span>お写真</span>
+                                </div>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-box after">
+                                <div class="image-placeholder art">
+                                    <i class="fas fa-palette"></i>
+                                    <p>After</p>
+                                    <span>ボタニカルアート</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pet-name">アメリカンショートヘア そらくん</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- うさぎの事例 -->
+            <div class="gallery-category">
+                <h3 class="category-title">
+                    <i class="fas fa-rabbit"></i>
+                    Rabbit
+                </h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="before-after">
+                            <div class="image-box before">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Before</p>
+                                    <span>お写真</span>
+                                </div>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-box after">
+                                <div class="image-placeholder art">
+                                    <i class="fas fa-palette"></i>
+                                    <p>After</p>
+                                    <span>ボタニカルアート</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pet-name">ホーランドロップ モカちゃん</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="before-after">
+                            <div class="image-box before">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Before</p>
+                                    <span>お写真</span>
+                                </div>
+                            </div>
+                            <div class="arrow">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="image-box after">
+                                <div class="image-placeholder art">
+                                    <i class="fas fa-palette"></i>
+                                    <p>After</p>
+                                    <span>ボタニカルアート</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="pet-name">ネザーランドドワーフ ミルクちゃん</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>あなたの大切なペットを<br>アートにしませんか？</h2>
+                <!-- 🔥 無料期間が終わったら、この文を変更 -->
+                <!-- 例: <p>高品質なボタニカルアートで、大切な思い出を形に</p> -->
+                <p class="cta-highlight"><span class="limited-badge-small">今だけ！</span>制作費無料・初期費用ゼロで始められます</p>
+                <a href="terms.html" class="cta-button large">
+                    <i class="fas fa-palette"></i>
+                    今すぐ制作を依頼する
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>
+                        <i class="fas fa-leaf"></i>
+                        Botanical Pet Art
+                    </h3>
+                    <p>インテリアに溶け込む、うちの子アート</p>
+                </div>
+                <div class="footer-links">
+                    <h4>リンク</h4>
+                    <ul>
+                        <li><a href="index.html">ホーム</a></li>
+                        <li><a href="flow.html">ご利用の流れ</a></li>
+                        <li><a href="terms.html">制作依頼</a></li>
+                        <li><a href="contact.html">お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Botanical Pet Art. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
