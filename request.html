@@ -107,6 +107,7 @@
                                 <p>クリックして写真を選択、またはドラッグ＆ドロップ</p>
                                 <span>1〜3枚の写真を推奨（JPG, PNG形式）</span>
                             </div>
+                            <!-- プレビュー表示エリア -->
                             <div id="filePreview" class="file-preview"></div>
                             <p class="input-note important">
                                 <i class="fas fa-info-circle"></i>
@@ -150,13 +151,15 @@
 
                     <!-- 送信ボタン -->
                     <div class="form-submit">
-                        <button type="submit" class="cta-button large">
+                        <button type="submit" id="submitButton" class="cta-button large">
                             <i class="fas fa-paper-plane"></i>
                             送信する
                         </button>
-                        <p class="submit-note">
-
-                        </p>
+                        <!-- ローディング表示 -->
+                        <div id="loadingMessage" style="display: none; margin-top: 15px;">
+                            <i class="fas fa-spinner fa-spin" style="color: #5a6c57;"></i> 写真をアップロードして送信中...<br>
+                            <small>（写真のサイズによっては時間がかかります）</small>
+                        </div>
                     </div>
                 </form>
 
@@ -166,7 +169,7 @@
                         <i class="fas fa-check-circle"></i>
                     </div>
                     <h3>送信完了しました！</h3>
-                    <p>ご依頼ありがとうございます。<br>内容を確認次第、ご連絡させていただきます。</p>
+                    <p>ご依頼ありがとうございます。<br>写真データのアップロードも完了しました。<br>内容を確認次第、ご連絡させていただきます。</p>
                     <a href="index.html" class="cta-button">
                         <i class="fas fa-home"></i>
                         トップページへ戻る
@@ -208,5 +211,165 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- ▼▼▼ 制作依頼フォーム送信用のスクリプト ▼▼▼ -->
+    <script>
+        // ファイル選択のプレビュー機能
+        const fileInput = document.getElementById('petPhotos');
+        const previewArea = document.getElementById('filePreview');
+        const uploadArea = document.getElementById('fileUploadArea');
+
+        // ドラッグ＆ドロップの演出
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('highlight');
+            }, false);
+        });
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('highlight');
+            }, false);
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            fileInput.files = files;
+            handleFiles(files);
+        });
+        // クリックでファイル選択
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+        // ファイル選択変更時
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            previewArea.innerHTML = ''; // クリア
+            if(files.length > 0) {
+                // ファイル名をリスト表示（簡易プレビュー）
+                const list = document.createElement('ul');
+                list.style.listStyle = 'none';
+                list.style.padding = '0';
+                list.style.marginTop = '10px';
+                
+                Array.from(files).forEach(file => {
+                    const li = document.createElement('li');
+                    li.style.marginBottom = '5px';
+                    li.style.fontSize = '0.9rem';
+                    li.innerHTML = `<i class="fas fa-image" style="color:#5a6c57; margin-right:5px;"></i> ${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`;
+                    list.appendChild(li);
+
+                    // 画像プレビュー（任意）
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.style.height = '60px';
+                        img.style.marginRight = '10px';
+                        img.style.borderRadius = '4px';
+                        img.style.display = 'inline-block';
+                        // プレビューエリアに追加したい場合はここで行う
+                        // previewArea.appendChild(img); 
+                    }
+                    reader.readAsDataURL(file);
+                });
+                previewArea.appendChild(list);
+            }
+        }
+
+
+        // 送信処理
+        document.getElementById('requestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // ▼▼▼ 【重要】ここにステップ1で取得したURLを貼り付けてください ▼▼▼
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPegIcJxcMkDbcL7LlyBIHkkZZs6cbZNqfB_ZzGc8bQFE7alJDdlKzBtBLGr66yFvR/exec'; 
+            // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+            if (SCRIPT_URL.includes('xxxxxxxxx')) {
+                alert('エラー：Google Apps ScriptのURLが設定されていません。HTMLファイルを編集してURLを貼り付けてください。');
+                return;
+            }
+
+            const form = document.getElementById('requestForm');
+            const submitBtn = document.getElementById('submitButton');
+            const loading = document.getElementById('loadingMessage');
+            const success = document.getElementById('successMessage');
+
+            // 送信中はボタンを無効化
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.5';
+            loading.style.display = 'block';
+
+            // フォームデータの収集
+            const formDataObj = {};
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                if (key !== 'petPhotos') {
+                    formDataObj[key] = value;
+                }
+            });
+
+            // 画像ファイルをBase64に変換してJSONに含める処理
+            const files = fileInput.files;
+            const filePromises = Array.from(files).map(file => {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve({
+                        name: file.name,
+                        type: file.type,
+                        data: reader.result // Base64文字列
+                    });
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            // 全画像の変換を待ってから送信
+            Promise.all(filePromises)
+                .then(images => {
+                    formDataObj.images = images; // 画像データをオブジェクトに追加
+
+                    // JSONとして送信
+                    return fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: JSON.stringify(formDataObj),
+                        // GASのCORS制限回避のため application/json ヘッダーはつけずに送るのが定石ですが
+                        // 文字列として送るため単純なPOSTになります
+                    });
+                })
+                .then(() => {
+                    // 送信成功（no-corsの場合はレスポンス読めないが成功とみなす、あるいはGAS側でJSONPなど工夫が必要だが
+                    // 今回のGASコードは redirect/json を返すため、fetchは完了する）
+                    loading.style.display = 'none';
+                    form.style.display = 'none'; // フォームを消す
+                    success.style.display = 'block'; // 完了メッセージを表示
+                    window.scrollTo(0, 0); // 上までスクロール
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('送信に失敗しました。写真のサイズが大きすぎる可能性があります（合計で数MB程度に抑えてください）。');
+                    loading.style.display = 'none';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                });
+        });
+    </script>
+
+    <style>
+        /* 追加スタイル: ドラッグ＆ドロップエリアの強調 */
+        .file-upload-area.highlight {
+            border-color: #5a6c57;
+            background-color: rgba(90, 108, 87, 0.1);
+        }
+        .file-preview {
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
 </body>
 </html>
