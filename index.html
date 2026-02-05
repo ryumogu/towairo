@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <style>
-        /* ▼▼▼ ショップボタンのスタイル（維持） ▼▼▼ */
+        /* ▼▼▼ ショップボタンのデザイン（復元） ▼▼▼ */
         .shop-button-container { text-align: center; margin-bottom: 50px; }
         .shop-button {
             display: inline-block;
@@ -28,46 +28,11 @@
             color: #fff;
         }
 
-        /* ▼▼▼ 矢印と画像エリアの調整（追加） ▼▼▼ */
-        .before-after-multi {
-            display: flex;
-            align-items: center; /* 垂直方向の中央揃え */
-            justify-content: center;
-            gap: 10px;
-        }
-
-        /* 矢印自体のスタイル */
-        .arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ccc;
-            font-size: 1.2rem;
-            width: 30px;      /* 幅を確保して潰れ防止 */
-            flex-shrink: 0;   /* 縮小されないようにする */
-            text-align: center;
-        }
-
-        /* スマホ（767px以下）の矢印・画像調整 */
-        @media (max-width: 767px) {
-            .before-after-multi {
-                flex-direction: column; /* 強制的に縦並び */
-            }
-            .arrow {
-                transform: rotate(90deg); /* 下向きにする */
-                margin: 5px 0; /* 上下に余白 */
-            }
-            .image-box {
-                width: 80%; /* スマホで見やすい幅に */
-                max-width: 250px;
-            }
-        }
-
-        /* PC（768px以上）のレイアウト維持と矢印調整 */
+        /* ▼▼▼ PCでの事例自体の並び（横2列グリッド） ▼▼▼ */
         @media (min-width: 768px) {
             .gallery-list {
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* 2列にする（維持） */
+                grid-template-columns: 1fr 1fr; /* 2列にする */
                 gap: 30px;
             }
             .gallery-category {
@@ -75,14 +40,23 @@
                 box-sizing: border-box;
                 height: 100%;
             }
-            /* PCでは画像を横並び・矢印は右向き */
-            .before-after-multi {
-                flex-direction: row; 
-            }
-            .arrow {
-                transform: rotate(0deg); /* 右向き（通常） */
-                margin: 0 5px;
-            }
+        }
+
+        /* ▼▼▼ 矢印の調整（ここが修正箇所） ▼▼▼ */
+        .before-after-multi {
+            display: flex;
+            flex-direction: column; /* 画像は常に縦並びを維持 */
+            align-items: center;
+        }
+        
+        .arrow {
+            /* 右矢印アイコンなので90度回して下向きにする */
+            transform: rotate(90deg);
+            /* センタリングと、画像へのめり込みを防ぐ最小限のスペース確保 */
+            margin: 5px 0;
+            text-align: center;
+            width: 30px; 
+            display: block;
         }
         /* ▲▲▲ 調整ここまで ▲▲▲ */
     </style>
