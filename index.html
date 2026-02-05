@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
     <style>
-        /* ▼▼▼ ショップボタンのスタイルを復元 ▼▼▼ */
+        /* ▼▼▼ ショップボタンのスタイル（維持） ▼▼▼ */
         .shop-button-container { text-align: center; margin-bottom: 50px; }
         .shop-button {
             display: inline-block;
-            border: 2px solid #d4a373; /* ベージュ/ゴールド色 */
+            border: 2px solid #d4a373;
             color: #d4a373;
             padding: 10px 25px;
             border-radius: 30px;
@@ -27,22 +27,64 @@
             background: #d4a373;
             color: #fff;
         }
-        /* ▲▲▲ 復元ここまで ▲▲▲ */
 
-        /* スマホでは縦並び（デフォルト）、PC（幅768px以上）で横並び */
+        /* ▼▼▼ 矢印と画像エリアの調整（追加） ▼▼▼ */
+        .before-after-multi {
+            display: flex;
+            align-items: center; /* 垂直方向の中央揃え */
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* 矢印自体のスタイル */
+        .arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 1.2rem;
+            width: 30px;      /* 幅を確保して潰れ防止 */
+            flex-shrink: 0;   /* 縮小されないようにする */
+            text-align: center;
+        }
+
+        /* スマホ（767px以下）の矢印・画像調整 */
+        @media (max-width: 767px) {
+            .before-after-multi {
+                flex-direction: column; /* 強制的に縦並び */
+            }
+            .arrow {
+                transform: rotate(90deg); /* 下向きにする */
+                margin: 5px 0; /* 上下に余白 */
+            }
+            .image-box {
+                width: 80%; /* スマホで見やすい幅に */
+                max-width: 250px;
+            }
+        }
+
+        /* PC（768px以上）のレイアウト維持と矢印調整 */
         @media (min-width: 768px) {
             .gallery-list {
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* 2列にする */
-                gap: 30px; /* 事例同士の間隔 */
+                grid-template-columns: 1fr 1fr; /* 2列にする（維持） */
+                gap: 30px;
             }
-            /* 横並びにした時に崩れないよう調整 */
             .gallery-category {
                 width: 100%;
                 box-sizing: border-box;
-                height: 100%; /* 高さを揃える */
+                height: 100%;
+            }
+            /* PCでは画像を横並び・矢印は右向き */
+            .before-after-multi {
+                flex-direction: row; 
+            }
+            .arrow {
+                transform: rotate(0deg); /* 右向き（通常） */
+                margin: 0 5px;
             }
         }
+        /* ▲▲▲ 調整ここまで ▲▲▲ */
     </style>
 
 </head>
@@ -195,7 +237,7 @@
                                     <span class="image-label">After 1</span>
                                 </div>
                                 <div class="arrow">
-                                    <i class="fas fa-arrow-down"></i>
+                                    <i class="fas fa-arrow-right"></i>
                                 </div>
                                 <div class="image-box after">
                                     <img src="images/dog-after.jpg" alt="犬のボタニカルアート - After 2" class="gallery-image">
@@ -242,7 +284,7 @@
                         <div class="gallery-item">
                             <div class="before-after-multi">
                                 <div class="image-box before">
-                                    <img src="images/bird-before.jpg" alt="インコの写真 - Before" class="gallery-image">
+                                    <img src="images/bird-before.PNG" alt="インコの写真 - Before" class="gallery-image">
                                     <span class="image-label">Before</span>
                                 </div>
                                 <div class="arrow">
