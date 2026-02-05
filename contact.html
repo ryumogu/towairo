@@ -56,6 +56,8 @@
                 <!-- お問い合わせフォーム -->
                 <div class="contact-form-wrapper">
                     <h2><i class="fas fa-paper-plane"></i> お問い合わせフォーム</h2>
+                    
+                    <!-- フォーム本体 -->
                     <form id="contactForm" class="contact-form">
                         <div class="form-group">
                             <label for="contactName" class="required">お名前</label>
@@ -84,11 +86,17 @@
                             <textarea id="contactMessage" name="contactMessage" rows="8" required placeholder="お問い合わせ内容をご記入ください"></textarea>
                         </div>
 
-                        <button type="submit" class="cta-button large">
+                        <button type="submit" id="submitButton" class="cta-button large">
                             <i class="fas fa-paper-plane"></i>
                             送信する
                         </button>
                     </form>
+                    
+                    <!-- ローディング表示（送信中） -->
+                    <div id="loadingMessage" style="display: none; text-align: center; padding: 20px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #5a6c57;"></i>
+                        <p style="margin-top: 10px;">送信中です...</p>
+                    </div>
 
                     <!-- 送信完了メッセージ -->
                     <div id="contactSuccessMessage" class="success-message" style="display: none;">
@@ -214,6 +222,64 @@
         </div>
     </footer>
 
+    <!-- JSファイルの読み込み -->
     <script src="js/main.js"></script>
+
+    <!-- ▼▼▼ お問い合わせフォーム送信用のスクリプト ▼▼▼ -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 通常の送信をキャンセル
+            
+            // ▼▼▼ 【重要】ここにステップ1で取得したURLを貼り付けてください ▼▼▼
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuAVECnCd8sBF1zgYEc82YOK7NhkZd0uHzTNYsevKn9qjXTkHOErmWJ7FbvMoCcgAO/exec'; 
+            // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+            if (SCRIPT_URL.includes('xxxxxxxxx')) {
+                alert('エラー：Google Apps ScriptのURLが設定されていません。HTMLファイルを編集してURLを貼り付けてください。');
+                return;
+            }
+
+            // 送信中の表示に切り替え
+            const form = document.getElementById('contactForm');
+            const loading = document.getElementById('loadingMessage');
+            const success = document.getElementById('contactSuccessMessage');
+            
+            form.style.display = 'none';
+            loading.style.display = 'block';
+
+            // フォームデータの取得
+            const formData = new FormData(form);
+
+            // Google Apps Scriptにデータを送信
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // これによりクロスドメイン制約を回避して送信できます
+            })
+            .then(() => {
+                // 送信完了（no-corsモードなので成功とみなして画面を切り替えます）
+                loading.style.display = 'none';
+                success.style.display = 'block';
+                // フォームをリセット
+                form.reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('送信に失敗しました。もう一度お試しください。');
+                // 元に戻す
+                loading.style.display = 'none';
+                form.style.display = 'block';
+            });
+        });
+
+        // FAQのアコーディオン動作（もしmain.jsにない場合の予備）
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+
 </body>
 </html>
