@@ -10,8 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     
-    <!-- ▼▼▼ 追加したスタイル：制作事例の横並び用 ▼▼▼ -->
     <style>
+        /* ▼▼▼ ショップボタンのスタイルを復元 ▼▼▼ */
+        .shop-button-container { text-align: center; margin-bottom: 50px; }
+        .shop-button {
+            display: inline-block;
+            border: 2px solid #d4a373; /* ベージュ/ゴールド色 */
+            color: #d4a373;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .shop-button:hover {
+            background: #d4a373;
+            color: #fff;
+        }
+        /* ▲▲▲ 復元ここまで ▲▲▲ */
+
         /* スマホでは縦並び（デフォルト）、PC（幅768px以上）で横並び */
         @media (min-width: 768px) {
             .gallery-list {
@@ -27,7 +44,6 @@
             }
         }
     </style>
-    <!-- ▲▲▲ 追加したスタイル終了 ▲▲▲ -->
 
 </head>
 <body>
