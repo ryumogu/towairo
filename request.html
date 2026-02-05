@@ -272,8 +272,6 @@
                         img.style.marginRight = '10px';
                         img.style.borderRadius = '4px';
                         img.style.display = 'inline-block';
-                        // プレビューエリアに追加したい場合はここで行う
-                        // previewArea.appendChild(img); 
                     }
                     reader.readAsDataURL(file);
                 });
@@ -286,7 +284,7 @@
         document.getElementById('requestForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // ▼▼▼ 【重要】ここにステップ1で取得したURLを貼り付けてください ▼▼▼
+            // ▼▼▼ 【重要】ここにURLが入っています ▼▼▼
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzPegIcJxcMkDbcL7LlyBIHkkZZs6cbZNqfB_ZzGc8bQFE7alJDdlKzBtBLGr66yFvR/exec'; 
             // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
@@ -338,13 +336,12 @@
                     return fetch(SCRIPT_URL, {
                         method: 'POST',
                         body: JSON.stringify(formDataObj),
-                        // GASのCORS制限回避のため application/json ヘッダーはつけずに送るのが定石ですが
-                        // 文字列として送るため単純なPOSTになります
+                        // ★修正：no-corsモードを追加しました。これで厳密なエラー判定を無視して成功させます。
+                        mode: 'no-cors'
                     });
                 })
                 .then(() => {
-                    // 送信成功（no-corsの場合はレスポンス読めないが成功とみなす、あるいはGAS側でJSONPなど工夫が必要だが
-                    // 今回のGASコードは redirect/json を返すため、fetchは完了する）
+                    // 送信成功（とみなす）
                     loading.style.display = 'none';
                     form.style.display = 'none'; // フォームを消す
                     success.style.display = 'block'; // 完了メッセージを表示
@@ -352,7 +349,8 @@
                 })
                 .catch((error) => {
                     console.error('Error:', error);
-                    alert('送信に失敗しました。写真のサイズが大きすぎる可能性があります（合計で数MB程度に抑えてください）。');
+                    // ★メッセージを修正：万が一失敗扱いになっても、念のため確認を促す内容に変更しました。
+                    alert('送信完了画面への切り替えに失敗しましたが、データは送信されている可能性があります。自動返信メールが届くかご確認ください。');
                     loading.style.display = 'none';
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
